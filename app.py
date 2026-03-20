@@ -15,7 +15,7 @@ def load_text_model():
 
 @st.cache_resource
 def load_image_pipeline():
-    return pipeline("image-classification", model="falcons-ai/nsfw_image_detection")
+    return pipeline("image-classification", model="AdamCodd/vit-base-nsfw-detector")
 
 def predict_text(text, tokenizer, model, threshold=0.5):
     inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True, max_length=256)
