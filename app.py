@@ -47,10 +47,18 @@ with tab1:
             with st.spinner("Analyzing..."):
                 tokenizer, model = load_text_model()
                 results = predict_text(text_input, tokenizer, model)
-            st.subheader("Prediction Results")
-            # Display all labels with confidence
-            for res in results:
-                st.metric(label=res['label'], value=f"{res['score']:.2%}")
+            is_toxic = any(res["score"] > 0.5 for res in results)
+            
+            if is_toxic:
+                st.error(" The text may contain harmful content (toxic, obscene, threat, insult, or identity attack).")
+            else:
+                st.success(" The text appears to be safe.")
+            
+            st.subheader("Detailed Probabilities")
+            cols = st.columns(2)
+            for i, res in enumerate(results):
+                with cols[i % 2]:
+                    st.metric(label=res['label'], value=f"{res['score']:.2%}")
 
 # ---------- Tab 2: Image ----------
 with tab2:
