@@ -9,8 +9,8 @@ from huggingface_hub import hf_hub_download
 # ---------- Global Settings ----------
 # Replace with your Hugging Face username and model repo names
 USERNAME = "yuweif"
-REPO_STAGE1 = f"{USERNAME}/snapchat-toxic-stage1-binary"
-REPO_STAGE2 = f"{USERNAME}/snapchat-toxic-stage2-multilabel"
+REPO_STAGE1 = f"{USERNAME}/snapchat-toxic-stage1"
+REPO_STAGE2 = f"{USERNAME}/snapchat-toxic-stage2"
 
 # Label order must match training
 LABELS = ["toxicity", "obscene", "threat", "insult", "identity_attack"]
